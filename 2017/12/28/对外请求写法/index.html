@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="spring," />
+  <meta name="keywords" content="code_style," />
 
 
 
@@ -94,21 +94,18 @@
 
 
 
-<meta name="description" content="如何使用: 再properties中指定@ConfigurationProperties 在需要使用的配置的类中引入@EnableConfigurationProperties，并指定需要解析的properties。">
-<meta name="keywords" content="spring">
+<meta name="description" content="对外请求是系统常见的需求，一般会有下面两种方式处理外部请求。讨论一下优劣。">
+<meta name="keywords" content="code_style">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring boot properties解析">
-<meta property="og:url" content="http://yoursite.com/2017/12/25/spring-boot/index.html">
+<meta property="og:title" content="对外请求写法">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/对外请求写法/index.html">
 <meta property="og:site_name" content="gfrock的日常垃圾桶">
-<meta property="og:description" content="如何使用: 再properties中指定@ConfigurationProperties 在需要使用的配置的类中引入@EnableConfigurationProperties，并指定需要解析的properties。">
+<meta property="og:description" content="对外请求是系统常见的需求，一般会有下面两种方式处理外部请求。讨论一下优劣。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/pasted-0.png">
-<meta property="og:image" content="http://yoursite.com/images/pasted-1.png">
-<meta property="og:updated_time" content="2017-12-28T15:30:34.000Z">
+<meta property="og:updated_time" content="2017-12-28T15:34:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring boot properties解析">
-<meta name="twitter:description" content="如何使用: 再properties中指定@ConfigurationProperties 在需要使用的配置的类中引入@EnableConfigurationProperties，并指定需要解析的properties。">
-<meta name="twitter:image" content="http://yoursite.com/images/pasted-0.png">
+<meta name="twitter:title" content="对外请求写法">
+<meta name="twitter:description" content="对外请求是系统常见的需求，一般会有下面两种方式处理外部请求。讨论一下优劣。">
 
 
 
@@ -137,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/25/spring-boot/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/28/对外请求写法/"/>
 
 
 
 
 
-  <title>spring boot properties解析 | gfrock的日常垃圾桶</title>
+  <title>对外请求写法 | gfrock的日常垃圾桶</title>
   
 
 
@@ -276,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/25/spring-boot/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/对外请求写法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gfrock">
@@ -293,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring boot properties解析</h1>
+          <h1 class="post-title" itemprop="name headline">对外请求写法</h1>
         
 
         <div class="post-meta">
@@ -305,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T17:33:00+08:00">
-                2017-12-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T23:26:00+08:00">
+                2017-12-28
               </time>
             
 
@@ -365,20 +362,25 @@
       
 
       
-        <h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用:"></a>如何使用:</h1><ul>
-<li>再properties中指定@ConfigurationProperties</li>
-<li>在需要使用的配置的类中引入@EnableConfigurationProperties，并指定需要解析的properties。<a id="more"></a>
+        <p>对外请求是系统常见的需求，一般会有下面两种方式处理外部请求。讨论一下优劣。<br><a id="more"></a></p>
+<h3 id="方法一：-转换工具util"><a href="#方法一：-转换工具util" class="headerlink" title="方法一：  转换工具util"></a>方法一：  转换工具util</h3><p>提供一个ConvertUtil类<br>     例如：<br>            ConvertUtil 里面包括 CreateParam 到 CreateRequest 中的转换，包括 CancleParam 到 CancelRequest 中的转换</p>
+<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><pre><code>所有的转换方法都可以在这个类里找到。
+</code></pre><h5 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h5><pre><code>1. 有接口修改就需要修改此类。
+2. 没有统一的入口修改请求和方法。
+</code></pre><h3 id="方法二：-抽象方法-adaptor"><a href="#方法二：-抽象方法-adaptor" class="headerlink" title="方法二： 抽象方法 + adaptor"></a>方法二： 抽象方法 + adaptor</h3><p>   提供一个抽象的requestManager 抽象请求方法<br>   对外部应用的请求可以抽象为：</p>
+<ul>
+<li>parseRequest</li>
+<li>doRequest</li>
+<li>parseResponse<br>三个基本操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> public &lt;Param, Req, Resp&gt; Result&lt;Resp&gt; request(Config config, Param param, Adaptor&lt;Param, Req, Resp&gt; adaptor)&#123;</span><br><span class="line">	ApiEnum api = adaptor.getApiName();</span><br><span class="line">	try&#123;</span><br><span class="line">		Req request = adaptor.buildRequest(config, param);</span><br><span class="line">		if (request == null)&#123;</span><br><span class="line">			log.error(ErrorEnum.PARAM_ERROR.getDesc() + &quot;: param=&quot; + param);</span><br><span class="line">			return ResultUtils.buildErrorResult(ErrorEnum.PARAM_ERROR, &quot;param=&quot; + param);</span><br><span class="line">		&#125;</span><br><span class="line">		IRequester&lt;Req&gt; sender = getRequester();</span><br><span class="line">		Result&lt;String&gt; senderResult = sender.request(config, request, api);</span><br><span class="line">		return adaptor.parseResponse(config, senderResult, param);</span><br><span class="line">	&#125; catch (Exception e) &#123;</span><br><span class="line">		log.error(&quot;execute error &quot;, e)</span><br><span class="line">		return ResultUtils.buildErrorResult(ErrorEnum.SYSTEM_ERROR, e.toString());</span><br><span class="line">	&#125;finally &#123;</span><br><span class="line">         // 记录结果到数据库</span><br><span class="line">		Record2DB();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h1><p>以shading-jdbc为例子：<br>在EnableConfigurationProperties中指定了  </p>
-<p>SpringBootShardingRuleConfigurationProperties,SpringBootMasterSlaveRuleConfigurationProperties 两个 properties属性类。</p>
-<h2 id="EnableConfigurationProperties"><a href="#EnableConfigurationProperties" class="headerlink" title="EnableConfigurationProperties"></a>EnableConfigurationProperties</h2><p>EnableConfigurationProperties 引入了EnableConfigurationPropertiesImportSelector</p>
-<p><img src="/images/pasted-0.png" alt="import_selector"><br>这个import中会引入两个register:<br>ConfigurationPropertiesBeanRegistrar.(处理EnableConfigurationProperties将属性bean注入到spring上下文中)<br>ConfigurationPropertiesBindingPostProcessorRegistrar.()</p>
-<h4 id="ConfigurationPropertiesBeanRegistrar"><a href="#ConfigurationPropertiesBeanRegistrar" class="headerlink" title="ConfigurationPropertiesBeanRegistrar"></a>ConfigurationPropertiesBeanRegistrar</h4><p>继承了 ImportBeanDefinitionRegistrar<br>将 EnableConfigurationProperties 中指定的properties中的类生成一个BeanDefinition 注入到spring中。    </p>
-<h4 id="ConfigurationPropertiesBindingPostProcessorRegistrar"><a href="#ConfigurationPropertiesBindingPostProcessorRegistrar" class="headerlink" title="ConfigurationPropertiesBindingPostProcessorRegistrar"></a>ConfigurationPropertiesBindingPostProcessorRegistrar</h4><p>继承了 ImportBeanDefinitionRegistrar  将<br>ConfigurationBeanFactoryMetaData,ConfigurationPropertiesBindingPostProcessor 注入到了srping 容器中</p>
-<h5 id="ConfigurationPropertiesBindingPostProcessor"><a href="#ConfigurationPropertiesBindingPostProcessor" class="headerlink" title="ConfigurationPropertiesBindingPostProcessor"></a>ConfigurationPropertiesBindingPostProcessor</h5><p>从名字上看实现了 BeanPostProcessor ,则主要的处理逻辑在bean实例化。在bean初始化时会调用如下代码</p>
-<p><img src="/images/pasted-1.png" alt="BeanPostProcessor"><br>关键执行了postProcessBeforeInitialization<br>该方法生成 PropertiesConfigurationFactory，指定了需要绑定的target和propertySources。 properties中包含了需要绑定的信息。</p>
-<h4 id="propertySources-从哪里来？"><a href="#propertySources-从哪里来？" class="headerlink" title="propertySources 从哪里来？"></a>propertySources 从哪里来？</h4>
+<p>优点：</p>
+<ol>
+<li>针对单个外部接口符合开放关闭原则，新增修改接口的请求和响应转换不在修改util类</li>
+<li>requestSender 可以由子类确定，确定是http 还是hsf</li>
+<li>统一的记录日志，对外部的请求会有同一个日志收口</li>
+</ol>
+
       
     </div>
     
@@ -395,7 +397,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/code-style/" rel="tag"># code_style</a>
           
         </div>
       
@@ -408,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/24/sharding-jdbc/" rel="next" title="sharding-jdbc">
-                <i class="fa fa-chevron-left"></i> sharding-jdbc
+              <a href="/2017/12/28/性能定位脚本/" rel="next" title="性能定位脚本">
+                <i class="fa fa-chevron-left"></i> 性能定位脚本
               </a>
             
           </div>
@@ -417,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/28/性能定位脚本/" rel="prev" title="性能定位脚本">
-                性能定位脚本 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#如何使用"><span class="nav-number">1.</span> <span class="nav-text">如何使用:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EnableConfigurationProperties"><span class="nav-number">2.1.</span> <span class="nav-text">EnableConfigurationProperties</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ConfigurationPropertiesBeanRegistrar"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">ConfigurationPropertiesBeanRegistrar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ConfigurationPropertiesBindingPostProcessorRegistrar"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">ConfigurationPropertiesBindingPostProcessorRegistrar</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ConfigurationPropertiesBindingPostProcessor"><span class="nav-number">2.1.0.2.1.</span> <span class="nav-text">ConfigurationPropertiesBindingPostProcessor</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#propertySources-从哪里来？"><span class="nav-number">2.1.0.3.</span> <span class="nav-text">propertySources 从哪里来？</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：-转换工具util"><span class="nav-number">1.</span> <span class="nav-text">方法一：  转换工具util</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#优点："><span class="nav-number">1.0.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缺点："><span class="nav-number">1.0.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：-抽象方法-adaptor"><span class="nav-number">2.</span> <span class="nav-text">方法二： 抽象方法 + adaptor</span></a></li></ol></div>
             
 
           </div>
