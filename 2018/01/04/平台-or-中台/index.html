@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。一般的系统演进会经历三个不同的架构时期：">
+<meta name="description" content="业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。一般的系统演进会经历四个不同的架构时期：">
 <meta name="keywords" content="架构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单体 平台 中台">
 <meta property="og:url" content="http://yoursite.com/2018/01/04/平台-or-中台/index.html">
 <meta property="og:site_name" content="gfrock的日常垃圾桶">
-<meta property="og:description" content="业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。一般的系统演进会经历三个不同的架构时期：">
+<meta property="og:description" content="业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。一般的系统演进会经历四个不同的架构时期：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-05T06:43:39.000Z">
+<meta property="og:updated_time" content="2018-01-07T09:07:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单体 平台 中台">
-<meta name="twitter:description" content="业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。一般的系统演进会经历三个不同的架构时期：">
+<meta name="twitter:description" content="业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。一般的系统演进会经历四个不同的架构时期：">
 
 
 
@@ -373,9 +373,11 @@
       
 
       
-        <p>业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。<br>一般的系统演进会经历三个不同的架构时期：</p>
+        <p>业务发展的过程中会经历多种架构变化，搞明白架构迁移的背景和选择带来的优劣，才能明确方向。<br>一般的系统演进会经历四个不同的架构时期：</p>
 <a id="more"></a>
-<h1 id="烟囱型架构"><a href="#烟囱型架构" class="headerlink" title="烟囱型架构"></a>烟囱型架构</h1><p>垂直化发展、未做足够抽象通用的架构称之为烟囱型架构，烟囱型架构并非一无是处，在早期业务变化迅速的情况下，不过度设计架构，能直接有效的支持到业务。<br>变化快，支持业务灵活。<br>但是这样的架构存在很严重的问题：   </p>
+<h1 id="单体型架构"><a href="#单体型架构" class="headerlink" title="单体型架构"></a>单体型架构</h1><p>刚开始时，部分系统都是由一个单个单体的应用构成的，由于人员的缺少，和业务的简单，单体型架构能够快速部署，快速开发，由于人员较少，沟通成本不高。单体型架构在人数不高，业务不复杂时可以很好的解决业务问题。</p>
+<h1 id="烟囱型架构"><a href="#烟囱型架构" class="headerlink" title="烟囱型架构"></a>烟囱型架构</h1><p>由于业务的快速发展，大量的新型业务快速上线，业务快速发展，单体应用不足以应付，这时候根据业务拆分除了多个系统。</p>
+<p>这种垂直化发展、未做足够抽象通用的架构称之为烟囱型架构，烟囱型架构并非一无是处，在早期业务变化迅速的情况下，不过度设计架构，能直接有效的支持到业务。<br>变化快，支持业务灵活。<br>但是这样的架构存在很严重的问题：   </p>
 <ul>
 <li>重复的功能重复建设，大量冗余代码和功能。</li>
 <li>维护成本高，通用性的改动涉及多个方面。</li>
@@ -391,7 +393,9 @@
 <li>填单、履行、支付、会员、营销、物流、风控等都形成了对应的共享服务。但对于一个新的业务来说，如何才能上线呢？需要了解所有平台下的能力，将其组装，协同完成一个业务的流转。对于已有能力的复用困难重重。</li>
 <li>快速上线一个业务，可能需要平台做一些特殊的定制，又要涉及到平台方开发，排期，业务的迭代要依赖平台的周期。针对现有互联网一两周快速试错的业务需求相背离。</li>
 </ol>
-<h1 id="中台架构"><a href="#中台架构" class="headerlink" title="中台架构"></a>中台架构</h1><h1 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h1><p>站在前人走过的路上才能看的更远，感谢阿里给我带来了对架构的思考。（笑～）</p>
+<h1 id="中台架构"><a href="#中台架构" class="headerlink" title="中台架构"></a>中台架构</h1><p>中台不是凭空而来，亦不是平台化架构换个名字。中台化架构是平台化架构的自然演进。</p>
+<p>平台的细化导致了刚进入的同学和组织很难了解所有平台的能力，而<br>一个商业系统不仅仅是组织几个component，而是需要解决方案。单独的平台不能提供一整套的解决方案。则需要一种中台的思想将平台的能力按照解决方案的维度组织为可以快速使用的能力，由业务方进行复用。</p>
+<h1 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h1><p>站在前人走过的路上才能看的更远，感谢阿里给我带来了对架构的思考。（笑～）</p>
 
       
     </div>
@@ -513,7 +517,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -524,7 +528,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -570,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#烟囱型架构"><span class="nav-number">1.</span> <span class="nav-text">烟囱型架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#平台型架构"><span class="nav-number">2.</span> <span class="nav-text">平台型架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#平台化架构好处"><span class="nav-number">2.1.</span> <span class="nav-text">平台化架构好处:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#但是平台结构就是万能的了么？"><span class="nav-number">2.2.</span> <span class="nav-text">但是平台结构就是万能的了么？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中台架构"><span class="nav-number">3.</span> <span class="nav-text">中台架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS"><span class="nav-number">4.</span> <span class="nav-text">PS:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单体型架构"><span class="nav-number">1.</span> <span class="nav-text">单体型架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#烟囱型架构"><span class="nav-number">2.</span> <span class="nav-text">烟囱型架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#平台型架构"><span class="nav-number">3.</span> <span class="nav-text">平台型架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#平台化架构好处"><span class="nav-number">3.1.</span> <span class="nav-text">平台化架构好处:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#但是平台结构就是万能的了么？"><span class="nav-number">3.2.</span> <span class="nav-text">但是平台结构就是万能的了么？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中台架构"><span class="nav-number">4.</span> <span class="nav-text">中台架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS"><span class="nav-number">5.</span> <span class="nav-text">PS:</span></a></li></ol></div>
             
 
           </div>
