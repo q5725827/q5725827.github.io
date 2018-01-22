@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。">
+<meta name="description" content="tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。1netstat -nat|awk  &amp;apos;&amp;#123;print $6&amp;#125;&amp;apos;|sort|uniq -c|sort -rn">
 <meta name="keywords" content="tcp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tcp数量异常问题">
 <meta property="og:url" content="http://yoursite.com/2017/06/07/close-wait和time-wait/index.html">
 <meta property="og:site_name" content="gfrock的日常垃圾桶">
-<meta property="og:description" content="tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。">
+<meta property="og:description" content="tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。1netstat -nat|awk  &amp;apos;&amp;#123;print $6&amp;#125;&amp;apos;|sort|uniq -c|sort -rn">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-3.png">
-<meta property="og:updated_time" content="2018-01-05T06:47:48.000Z">
+<meta property="og:updated_time" content="2018-01-12T08:12:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcp数量异常问题">
-<meta name="twitter:description" content="tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。">
+<meta name="twitter:description" content="tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。1netstat -nat|awk  &amp;apos;&amp;#123;print $6&amp;#125;&amp;apos;|sort|uniq -c|sort -rn">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-3.png">
 
 
@@ -375,7 +375,8 @@
       
 
       
-        <p>tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。<br><a id="more"></a></p>
+        <p>tcp 的链接是有上限的，当大量出现同一链接状态的时候可以大概判断原因。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nat|awk  &apos;&#123;print $6&#125;&apos;|sort|uniq -c|sort -rn</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h1 id="tcp状态流转图"><a href="#tcp状态流转图" class="headerlink" title="tcp状态流转图"></a>tcp状态流转图</h1><p><img src="/images/pasted-3.png" alt="状态流转图"></p>
 <h1 id="大量SYN-SENT"><a href="#大量SYN-SENT" class="headerlink" title="大量SYN_SENT"></a>大量SYN_SENT</h1><p>本地机器作为客户端大量发送SYNC指令，可能是中病毒或者扫描IP端。对端机器大量不存在。</p>
 <h1 id="大量SYN-RCVD"><a href="#大量SYN-RCVD" class="headerlink" title="大量SYN_RCVD"></a>大量SYN_RCVD</h1><p>SYN Flood DDOS攻击。</p>
@@ -499,7 +500,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -510,7 +511,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -521,7 +522,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
