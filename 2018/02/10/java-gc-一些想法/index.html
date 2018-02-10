@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="大部分的可运营的系统都是需要配置系统支撑的，利用运行时获取配置针对不同的商户使用不同的解决方案。配置系统为了可扩展性大部分是一些kv系统(e.g diamond),或者树型系统(zk), 如何优雅的方便的使用配置系统为系统提供高灵活性是一门讲究的学问。">
+<meta name="description" content="最近全集团升级了docker，所有的机器都是4C8G的配置，脚本也需要发生变化，记录一下目前先上的配置。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置系统使用">
-<meta property="og:url" content="http://yoursite.com/2018/01/22/配置系统使用/index.html">
+<meta property="og:title" content="java 线上配置">
+<meta property="og:url" content="http://yoursite.com/2018/02/10/java-gc-一些想法/index.html">
 <meta property="og:site_name" content="gfrock的日常垃圾桶">
-<meta property="og:description" content="大部分的可运营的系统都是需要配置系统支撑的，利用运行时获取配置针对不同的商户使用不同的解决方案。配置系统为了可扩展性大部分是一些kv系统(e.g diamond),或者树型系统(zk), 如何优雅的方便的使用配置系统为系统提供高灵活性是一门讲究的学问。">
+<meta property="og:description" content="最近全集团升级了docker，所有的机器都是4C8G的配置，脚本也需要发生变化，记录一下目前先上的配置。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-22T07:21:51.000Z">
+<meta property="og:updated_time" content="2018-02-10T07:43:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="配置系统使用">
-<meta name="twitter:description" content="大部分的可运营的系统都是需要配置系统支撑的，利用运行时获取配置针对不同的商户使用不同的解决方案。配置系统为了可扩展性大部分是一些kv系统(e.g diamond),或者树型系统(zk), 如何优雅的方便的使用配置系统为系统提供高灵活性是一门讲究的学问。">
+<meta name="twitter:title" content="java 线上配置">
+<meta name="twitter:description" content="最近全集团升级了docker，所有的机器都是4C8G的配置，脚本也需要发生变化，记录一下目前先上的配置。">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/22/配置系统使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/10/java-gc-一些想法/"/>
 
 
 
 
 
-  <title>配置系统使用 | gfrock的日常垃圾桶</title>
+  <title>java 线上配置 | gfrock的日常垃圾桶</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/22/配置系统使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/10/java-gc-一些想法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gfrock">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">配置系统使用</h1>
+          <h1 class="post-title" itemprop="name headline">java 线上配置</h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T14:19:00+08:00">
-                2018-01-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-10T13:52:00+08:00">
+                2018-02-10
               </time>
             
 
@@ -341,7 +341,7 @@
 
           
           
-             <span id="/2018/01/22/配置系统使用/" class="leancloud_visitors" data-flag-title="配置系统使用">
+             <span id="/2018/02/10/java-gc-一些想法/" class="leancloud_visitors" data-flag-title="java 线上配置">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -372,40 +372,33 @@
       
 
       
-        <p>大部分的可运营的系统都是需要配置系统支撑的，利用运行时获取配置针对不同的商户使用不同的解决方案。配置系统为了可扩展性大部分是一些kv系统(e.g diamond),或者树型系统(zk), 如何优雅的方便的使用配置系统为系统提供高灵活性是一门讲究的学问。</p>
+        <p>最近全集团升级了docker，所有的机器都是4C8G的配置，脚本也需要发生变化，记录一下目前先上的配置。</p>
 <a id="more"></a>
-<h1 id="直接获取型"><a href="#直接获取型" class="headerlink" title="直接获取型"></a>直接获取型</h1><p>在需要的时候获取配置，这是大家的常规思维，根据当时的需求获取需要的配置.<br>这种大部分出现在了k,v这种系统上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e.g </span><br><span class="line">    String config = configSystem.get(&quot;configKey&quot;);</span><br><span class="line">    Map map = JSON.parseMap(config);</span><br><span class="line">    String configVale = map.get(&quot;acturlKey&quot;);</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>优势：  <ol>
-<li>所见即所得，获取灵活。</li>
-<li>配置生成在获取时，变更方便。</li>
-</ol>
-</li>
-<li>劣势：<ol>
-<li>配置散落在系统的各个部分，每个配置有不同的参数控制。</li>
-<li>配置没有合适的抽象</li>
-</ol>
-</li>
+<h3 id="内存配置"><a href="#内存配置" class="headerlink" title="内存配置"></a>内存配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -Xms4g -Xmx4g&quot;</span><br><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -Xmn2g&quot;</span><br><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:PermSize=256m -XX:MaxPermSize=512m&quot;</span><br><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:MaxDirectMemorySize=1g&quot;</span><br><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:SurvivorRatio=10&quot;</span><br></pre></td></tr></table></figure>
+<p>8G的内存使用了4G内存，新生代2G，老年代2 ,512M 持久代，堆外内存1G。<br>共计5.5G。<br>空出来的2.5G 空出来留给系统使用,buffer/cache/kernel。</p>
+<p>SurvivorRatio=10  设置  Eden区与Survivor区的大小比值 10:2<br>每个Survivor区的大小为1.</p>
+<h4 id="SurvivorRatio设置的原因？"><a href="#SurvivorRatio设置的原因？" class="headerlink" title="SurvivorRatio设置的原因？"></a>SurvivorRatio设置的原因？</h4><p>这个和javaGC有关<br>年轻代回收机制是：标记-复制。 是机遇新生代数据生命周期一般较短。</p>
+<h5 id="增大so？"><a href="#增大so？" class="headerlink" title="增大so？"></a>增大so？</h5><p>当年轻代分布按照10:1:1的比例时，一个so的大小是170M，经过回收后从so1拷贝到so2的剩余对象远远小于170M，可能就几M，如果调整Eden与so的比例，缩小Eden，增大so呢(例如调整比例到1:1:1)？<br>So的大小最大就会有682M，经过对象回收后可能存活的对象也会大大增多，从so1拷贝到so2的耗时也会增加，严重情况下会远超秒级，甚至超过FGC带来的影响都有可能。  </p>
+<h5 id="减小so？"><a href="#减小so？" class="headerlink" title="减小so？"></a>减小so？</h5><p>那你们可能会说，能否调整年轻代的分布比例，让so尽可能的小呢。这样做带来的影响就是，对象从so1拷贝到so2之后会发现不够放，过早的进入老年代，对象过早进入老年代就会过早的触发FGC的发生(大对象会导致老年代产生更多的内存碎片，这些碎片无法得到有效利用，致使提前产生FGC)。因此比例的大小设定是一个数据平衡的问题。10:1:1的比例设定，是阿里的前辈工程师经过无数次的实验验证的最优设置方案吧。</p>
+<h3 id="GC配置"><a href="#GC配置" class="headerlink" title="GC配置"></a>GC配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:CMSMaxAbortablePrecleanTime=5000&quot;</span><br><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=80 -XX:+UseCMSInitiatingOccupancyOnly&quot;</span><br><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:+ExplicitGCInvokesConcurrent -Dsun.rmi.dgc.server.gcInterval=2592000000 -Dsun.rmi.dgc.client.gcInterval=2592000000&quot;</span><br><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:ParallelGCThreads=$&#123;CPU_COUNT&#125;&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="年轻代收集"><a href="#年轻代收集" class="headerlink" title="年轻代收集"></a>年轻代收集</h5><ul>
+<li>-XX:ParallelGCThreads    并行收集器的线程数(此值最好配置与处理器数目相等 同样适用于CMS)</li>
 </ul>
-<h1 id="配置生成和获取分离"><a href="#配置生成和获取分离" class="headerlink" title="配置生成和获取分离"></a>配置生成和获取分离</h1><p>一般系统，一次请求针对的运行需求是固定的，把一次请求的相关配置所有包含起来，可以通过一个配置方便的管理一次请求中的所有变化。</p>
-<p>系统层级有抽象，对应的指导系统运行的配置系统也有抽象层级，根据需求将配置系统转换成对应的抽象也是生成配置时应有的功能。</p>
-<p>综上：  </p>
-<ol>
-<li>应该根据配置生成不同的配置对象。</li>
-<li>配置的对象应该有层级    </li>
-<li>配置应跟随请求的整个生命周期。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">配置生成部分：</span><br><span class="line">   License 存储所有的配置。</span><br><span class="line">   启动或变化时根据最小力度 ，生成一个统一的配置对象，这个配置对象包含了一次请求中所有的配置变化。</span><br><span class="line">   String config = configSystem.get(&quot;configKey&quot;);</span><br><span class="line">   Object configObject = JSON.parseMap(config);</span><br><span class="line">   License.add(licenseId,configObject)</span><br><span class="line">   </span><br><span class="line">   在不同的使用场景下，获取配置：</span><br><span class="line">   A: </span><br><span class="line">   SchemaConfig schemaConfig= （SchemaConfig）License.get(licenseId)</span><br><span class="line">   schemaConfig.getPayId();</span><br><span class="line">   </span><br><span class="line">   B:</span><br><span class="line">   SolutionConfig solutionConfig= （SolutionConfig）License.get(licenseId)</span><br><span class="line">   solutionConfig.getPayParternId();</span><br></pre></td></tr></table></figure>
+<h5 id="老年代收集"><a href="#老年代收集" class="headerlink" title="老年代收集"></a>老年代收集</h5><ul>
+<li>-XX:+UseConcMarkSweepGC     使用CMS收集器</li>
+<li>-XX:+UseCMSCompactAtFullCollection     在FULL GC的时候， 对老年代的压缩(CMS默认不进行压缩，会造成内存碎片)</li>
+</ul>
+<h6 id="CMS特定"><a href="#CMS特定" class="headerlink" title="CMS特定"></a>CMS特定</h6><ul>
+<li>-XX:+CMSClassUnloadingEnabled      在cms中清除permgen</li>
+<li>-XX:+UseCMSInitiatingOccupancyOnly      使用手动定义初始化定义开始CMS收集</li>
+<li>-XX:CMSInitiatingOccupancyFraction=80    使用cms作为垃圾回收的起始阈值。</li>
+<li>XX:+ExplicitGCInvokesConcurrent     JVM无论什么时候调用系统GC，都执行CMS GC</li>
+</ul>
+<h3 id="异常配置"><a href="#异常配置" class="headerlink" title="异常配置"></a>异常配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -Xloggc:$&#123;MIDDLEWARE_LOGS&#125;/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps&quot;</span><br><span class="line">      SERVICE_OPTS=&quot;$&#123;SERVICE_OPTS&#125; -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$&#123;MIDDLEWARE_LOGS&#125;/java.hprof&quot;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>优势：  <ol>
-<li>配置的生成统一，不在散落在配置系统的各处。</li>
-<li>配置获取时去除配置系统本身的通用性，有抽象层级，方便系统分层调用。</li>
-</ol>
-</li>
-<li>劣势：<ol>
-<li>不够简单，更改时需要更改配置生成和配置获取。</li>
-</ol>
-</li>
+<li>-XX:+PrintGCDetails 指定打印GC模式</li>
+<li>-XX:+HeapDumpOnOutOfMemoryError </li>
+<li>-XX:HeapDumpPath  堆栈溢出文件位置</li>
 </ul>
 
       
@@ -431,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/07/微信组件/" rel="next" title="微信小程序组件">
-                <i class="fa fa-chevron-left"></i> 微信小程序组件
+              <a href="/2018/01/22/不常用的sql代码/" rel="next" title="不常用的sql代码">
+                <i class="fa fa-chevron-left"></i> 不常用的sql代码
               </a>
             
           </div>
@@ -440,10 +433,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/22/不常用的sql代码/" rel="prev" title="不常用的sql代码">
-                不常用的sql代码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -579,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#直接获取型"><span class="nav-number">1.</span> <span class="nav-text">直接获取型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置生成和获取分离"><span class="nav-number">2.</span> <span class="nav-text">配置生成和获取分离</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存配置"><span class="nav-number">1.</span> <span class="nav-text">内存配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SurvivorRatio设置的原因？"><span class="nav-number">1.1.</span> <span class="nav-text">SurvivorRatio设置的原因？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#增大so？"><span class="nav-number">1.1.1.</span> <span class="nav-text">增大so？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#减小so？"><span class="nav-number">1.1.2.</span> <span class="nav-text">减小so？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GC配置"><span class="nav-number">2.</span> <span class="nav-text">GC配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#年轻代收集"><span class="nav-number">2.0.1.</span> <span class="nav-text">年轻代收集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#老年代收集"><span class="nav-number">2.0.2.</span> <span class="nav-text">老年代收集</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#CMS特定"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">CMS特定</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常配置"><span class="nav-number">3.</span> <span class="nav-text">异常配置</span></a></li></ol></div>
             
 
           </div>
