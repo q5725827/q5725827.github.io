@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),一种是sequence提供(oracle).">
+<meta name="description" content="单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),一种是sequence提供(oracle).都不符合分布式场景下的ID生成要求。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式场景下的ID生成演进">
 <meta property="og:url" content="http://yoursite.com/2018/02/25/分库分表Id设置/index.html">
 <meta property="og:site_name" content="gfrock的日常垃圾桶">
-<meta property="og:description" content="单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),一种是sequence提供(oracle).">
+<meta property="og:description" content="单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),一种是sequence提供(oracle).都不符合分布式场景下的ID生成要求。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T16:15:13.000Z">
+<meta property="og:updated_time" content="2018-02-25T16:22:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式场景下的ID生成演进">
-<meta name="twitter:description" content="单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),一种是sequence提供(oracle).">
+<meta name="twitter:description" content="单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),一种是sequence提供(oracle).都不符合分布式场景下的ID生成要求。">
 
 
 
@@ -383,7 +383,7 @@
       
 
       
-        <p>单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),<br>一种是sequence提供(oracle).</p>
+        <p>单节点DBMS的情况下，自增键由数据库系统提供，一种是表级别的id自增(mysql),<br>一种是sequence提供(oracle).都不符合分布式场景下的ID生成要求。</p>
 <a id="more"></a>
 <h1 id="分布式场景下的ID生成演进"><a href="#分布式场景下的ID生成演进" class="headerlink" title="分布式场景下的ID生成演进"></a>分布式场景下的ID生成演进</h1><h2 id="使用单节点mysql生成ID"><a href="#使用单节点mysql生成ID" class="headerlink" title="使用单节点mysql生成ID"></a>使用单节点mysql生成ID</h2><p>将生成ID和数据存储逻辑分开。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update sequence set value = $oldvalue + 1 where value = $oldvalue</span><br></pre></td></tr></table></figure></p>
 <ul>
@@ -454,6 +454,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/07/实现分布式锁/" rel="prev" title="实现分布式锁">
+                实现分布式锁 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -532,7 +536,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

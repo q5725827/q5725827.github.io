@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="test," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,18 +94,17 @@
 
 
 
-<meta name="description" content="不会测试的开发，不是真正的开发。">
-<meta name="keywords" content="test">
+<meta name="description" content="在分布式部署的情况下，java.util的锁并不能提供该场景下的资源锁定，需要结合一些集中式的存储完成分布式锁。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="持续集成">
-<meta property="og:url" content="http://yoursite.com/2018/02/12/持续集成/index.html">
+<meta property="og:title" content="实现分布式锁">
+<meta property="og:url" content="http://yoursite.com/2018/03/07/实现分布式锁/index.html">
 <meta property="og:site_name" content="gfrock的日常垃圾桶">
-<meta property="og:description" content="不会测试的开发，不是真正的开发。">
+<meta property="og:description" content="在分布式部署的情况下，java.util的锁并不能提供该场景下的资源锁定，需要结合一些集中式的存储完成分布式锁。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T16:22:06.000Z">
+<meta property="og:updated_time" content="2018-03-07T11:29:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="持续集成">
-<meta name="twitter:description" content="不会测试的开发，不是真正的开发。">
+<meta name="twitter:title" content="实现分布式锁">
+<meta name="twitter:description" content="在分布式部署的情况下，java.util的锁并不能提供该场景下的资源锁定，需要结合一些集中式的存储完成分布式锁。">
 
 
 
@@ -134,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/12/持续集成/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/07/实现分布式锁/"/>
 
 
 
 
 
-  <title>持续集成 | gfrock的日常垃圾桶</title>
+  <title>实现分布式锁 | gfrock的日常垃圾桶</title>
   
 
 
@@ -273,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/12/持续集成/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/实现分布式锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gfrock">
@@ -290,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">持续集成</h1>
+          <h1 class="post-title" itemprop="name headline">实现分布式锁</h1>
         
 
         <div class="post-meta">
@@ -302,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T18:06:00+08:00">
-                2018-02-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T17:49:56+08:00">
+                2018-03-07
               </time>
             
 
@@ -313,28 +312,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -342,7 +319,7 @@
 
           
           
-             <span id="/2018/02/12/持续集成/" class="leancloud_visitors" data-flag-title="持续集成">
+             <span id="/2018/03/07/实现分布式锁/" class="leancloud_visitors" data-flag-title="实现分布式锁">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -373,9 +350,22 @@
       
 
       
-        <p>不会测试的开发，不是真正的开发。</p>
+        <p>在分布式部署的情况下，java.util的锁并不能提供该场景下的资源锁定，需要结合一些集中式的存储完成分布式锁。</p>
 <a id="more"></a>
-<h1 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h1><h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><h2 id="手工测试"><a href="#手工测试" class="headerlink" title="手工测试"></a>手工测试</h2><h3 id="jacoco"><a href="#jacoco" class="headerlink" title="jacoco"></a>jacoco</h3><h2 id="线上回放"><a href="#线上回放" class="headerlink" title="线上回放"></a>线上回放</h2><h1 id="集成指标"><a href="#集成指标" class="headerlink" title="集成指标"></a>集成指标</h1><h2 id="代码覆盖率"><a href="#代码覆盖率" class="headerlink" title="代码覆盖率"></a>代码覆盖率</h2><p>测试覆盖率作为一种质量目标，经常出现在代码质量要求中。但是把覆盖率作为质量目标没有意义，但是作为一种发现未被测试覆盖的代码更改确是一个不错的指标。</p>
+<h1 id="业务代码："><a href="#业务代码：" class="headerlink" title="业务代码："></a>业务代码：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void test()&#123;           </span><br><span class="line">    while(true)&#123;</span><br><span class="line">        if(tryLock())&#123;     // 加锁</span><br><span class="line">            try&#123;</span><br><span class="line">                logger.info(&quot;Got lock! Hostname:&#123;&#125; ThreadName:&#123;&#125;&quot;,getHostname(),Thread.currentThread().getName());</span><br><span class="line">                Thread.sleep(1000);</span><br><span class="line">            &#125;finally &#123;</span><br><span class="line">                unLock();  //解锁</span><br><span class="line">                logger.info(&quot;Release lock! Hostname:&#123;&#125; ThreadName:&#123;&#125;&quot;,getHostname(),Thread.currentThread().getName());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第一种加锁代码："><a href="#第一种加锁代码：" class="headerlink" title="第一种加锁代码："></a>第一种加锁代码：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public boolean trylock(String key) &#123;</span><br><span class="line">    ResultCode code = tairManager.put(NAMESPACE, key, &quot;lock&quot;, 10, 0);</span><br><span class="line">    if (ResultCode.SUCCESS.equals(code))</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line">public boolean unlock(String key) &#123;</span><br><span class="line">    ldbTairManager.invalid(NAMESPACE, key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题：</p>
+<ol>
+<li>当机器重启,挂掉时没有unlock。会导致一直锁定资源。</li>
+</ol>
+<h3 id="第一种加锁代码改进："><a href="#第一种加锁代码改进：" class="headerlink" title="第一种加锁代码改进："></a>第一种加锁代码改进：</h3><p>增加超时时间可以有效解决没有unlock的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public boolean trylock(String key, int timeout) &#123;</span><br><span class="line">    ResultCode code = tairManager.put(NAMESPACE, key, &quot;lock&quot;, 10, timeout);</span><br><span class="line">    if (ResultCode.SUCCESS.equals(code))</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="集中式的存储出现问题如何处理？"><a href="#集中式的存储出现问题如何处理？" class="headerlink" title="集中式的存储出现问题如何处理？"></a>集中式的存储出现问题如何处理？</h2><p>任何在分布式环境下的资源都是不可可靠的。在分布式环境下(tair,redis)出现超时都是有可能的。<br>一次put超时</p>
+<ol>
+<li>上一次put其实已经成功了；那么重试肯定会失败；</li>
+<li>上一次put其实失败了；那么若这一次顺利，就会成功；</li>
+</ol>
+<p>根据资源幂等性的要求，一次操作如果成功，则后续重试应该成功。<br>这一次需要使用value里面做文章，使用uuid代表一次唯一锁定需求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public boolean trylock(String key, int timeout) &#123;</span><br><span class="line">    Result&lt;DataEntry&gt; result = tairManager.get(NAMESPACE, lockKey);</span><br><span class="line">    if (result == null) return null;</span><br><span class="line">    if (ResultCode.DATANOTEXSITS.equals(result.getRc())) &#123; </span><br><span class="line">        ResultCode code = ldbTairManager.put(NAMESPACE, key, getLockValue(), 10, timeout);</span><br><span class="line">        if (ResultCode.SUCCESS.equals(code))</span><br><span class="line">            return true;</span><br><span class="line">    &#125;else if(result.getValue() != null &amp;&amp; getLockValue().equals(result.getValue().getValue()))&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private String getLockValue()&#123;  </span><br><span class="line">    return Random.uuid();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -391,12 +381,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/test/" rel="tag"># test</a>
-          
-        </div>
-      
 
       
       
@@ -406,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/10/java-gc-一些想法/" rel="next" title="java 线上配置">
-                <i class="fa fa-chevron-left"></i> java 线上配置
+              <a href="/2018/02/25/分库分表Id设置/" rel="next" title="分布式场景下的ID生成演进">
+                <i class="fa fa-chevron-left"></i> 分布式场景下的ID生成演进
               </a>
             
           </div>
@@ -415,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/25/分库分表Id设置/" rel="prev" title="分布式场景下的ID生成演进">
-                分布式场景下的ID生成演进 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#测试方法"><span class="nav-number">1.</span> <span class="nav-text">测试方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">1.1.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成测试"><span class="nav-number">1.2.</span> <span class="nav-text">集成测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手工测试"><span class="nav-number">1.3.</span> <span class="nav-text">手工测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jacoco"><span class="nav-number">1.3.1.</span> <span class="nav-text">jacoco</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线上回放"><span class="nav-number">1.4.</span> <span class="nav-text">线上回放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集成指标"><span class="nav-number">2.</span> <span class="nav-text">集成指标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码覆盖率"><span class="nav-number">2.1.</span> <span class="nav-text">代码覆盖率</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#业务代码："><span class="nav-number">1.</span> <span class="nav-text">业务代码：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种加锁代码："><span class="nav-number">1.1.</span> <span class="nav-text">第一种加锁代码：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种加锁代码改进："><span class="nav-number">1.1.1.</span> <span class="nav-text">第一种加锁代码改进：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集中式的存储出现问题如何处理？"><span class="nav-number">1.2.</span> <span class="nav-text">集中式的存储出现问题如何处理？</span></a></li></ol></li></ol></div>
             
 
           </div>
