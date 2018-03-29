@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="test," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,18 +94,19 @@
 
 
 
-<meta name="description" content="不会测试的开发，不是真正的开发。">
-<meta name="keywords" content="test">
+<meta name="description" content="Hystrix分布式任务中一定处出现依赖，不可避免的会调用失败。Hystrix提供了熔断、隔离、Fallback、cache、监控等功能，能够在一个、或多个依赖同时出现问题时保证系统依然可用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="持续集成">
-<meta property="og:url" content="http://yoursite.com/2018/02/12/持续集成/index.html">
+<meta property="og:title" content="Hystrix">
+<meta property="og:url" content="http://yoursite.com/2018/03/28/Hystrix/index.html">
 <meta property="og:site_name" content="gfrock的日常垃圾桶">
-<meta property="og:description" content="不会测试的开发，不是真正的开发。">
+<meta property="og:description" content="Hystrix分布式任务中一定处出现依赖，不可避免的会调用失败。Hystrix提供了熔断、隔离、Fallback、cache、监控等功能，能够在一个、或多个依赖同时出现问题时保证系统依然可用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T16:22:06.000Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-10.png">
+<meta property="og:updated_time" content="2018-03-29T06:15:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="持续集成">
-<meta name="twitter:description" content="不会测试的开发，不是真正的开发。">
+<meta name="twitter:title" content="Hystrix">
+<meta name="twitter:description" content="Hystrix分布式任务中一定处出现依赖，不可避免的会调用失败。Hystrix提供了熔断、隔离、Fallback、cache、监控等功能，能够在一个、或多个依赖同时出现问题时保证系统依然可用。">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-10.png">
 
 
 
@@ -134,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/12/持续集成/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/28/Hystrix/"/>
 
 
 
 
 
-  <title>持续集成 | gfrock的日常垃圾桶</title>
+  <title>Hystrix | gfrock的日常垃圾桶</title>
   
 
 
@@ -273,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/12/持续集成/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/Hystrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gfrock">
@@ -290,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">持续集成</h1>
+          <h1 class="post-title" itemprop="name headline">Hystrix</h1>
         
 
         <div class="post-meta">
@@ -302,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T18:06:00+08:00">
-                2018-02-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T22:09:00+08:00">
+                2018-03-28
               </time>
             
 
@@ -342,7 +343,7 @@
 
           
           
-             <span id="/2018/02/12/持续集成/" class="leancloud_visitors" data-flag-title="持续集成">
+             <span id="/2018/03/28/Hystrix/" class="leancloud_visitors" data-flag-title="Hystrix">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -373,9 +374,33 @@
       
 
       
-        <p>不会测试的开发，不是真正的开发。</p>
+        <h1 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h1><p>分布式任务中一定处出现依赖，不可避免的会调用失败。Hystrix提供了熔断、隔离、Fallback、cache、监控等功能，能够在一个、或多个依赖同时出现问题时保证系统依然可用。</p>
 <a id="more"></a>
-<h1 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h1><h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><h2 id="手工测试"><a href="#手工测试" class="headerlink" title="手工测试"></a>手工测试</h2><h3 id="jacoco"><a href="#jacoco" class="headerlink" title="jacoco"></a>jacoco</h3><h2 id="线上回放"><a href="#线上回放" class="headerlink" title="线上回放"></a>线上回放</h2><h1 id="集成指标"><a href="#集成指标" class="headerlink" title="集成指标"></a>集成指标</h1><h2 id="代码覆盖率"><a href="#代码覆盖率" class="headerlink" title="代码覆盖率"></a>代码覆盖率</h2><p>测试覆盖率作为一种质量目标，经常出现在代码质量要求中。但是把覆盖率作为质量目标没有意义，但是作为一种发现未被测试覆盖的代码更改确是一个不错的指标。</p>
+<h2 id="Hystrix设计原则"><a href="#Hystrix设计原则" class="headerlink" title="Hystrix设计原则"></a>Hystrix设计原则</h2><ol>
+<li>防止单个依赖使用容器（tomcat）线程。</li>
+<li>快速切段依赖，使用快速失败而不是使用排队策略。</li>
+<li>使用隔离技术（例如隔板，泳道和断路器模式）来限制任何一种依赖的影响。</li>
+<li>通过实时监控指标优化发问题发现时间。</li>
+</ol>
+<h2 id="Hystrix设计目标"><a href="#Hystrix设计目标" class="headerlink" title="Hystrix设计目标"></a>Hystrix设计目标</h2><ol>
+<li>提供访问第三方服务（通过网络）发生延迟和故障时，对自身系统进行保护。</li>
+<li>防止集联故障。</li>
+<li>快速失败和快速恢复。</li>
+<li>优雅降级。</li>
+<li>近实时的报警和操作控制。</li>
+</ol>
+<h2 id="Hystrix-如何实现设计目标？"><a href="#Hystrix-如何实现设计目标？" class="headerlink" title="Hystrix 如何实现设计目标？"></a>Hystrix 如何实现设计目标？</h2><ul>
+<li>通常使用 HystrixCommand 或者 HystrixObservableCommand 包装对外部依赖的调用，这些调用一般运行在单独的线程中。  </li>
+<li>遇到超时阈值的设定，会根据mertic时间设定一个略高于观察时间的阈值。</li>
+<li>为每一个依赖项设置一个线程池或者信号量，如果失败则立即拒绝而不是使用queue去存储。</li>
+<li>使用断路器手动或者自动的断掉一个依赖。</li>
+<li>实时监控</li>
+</ul>
+<h2 id="Hystrix工作机制"><a href="#Hystrix工作机制" class="headerlink" title="Hystrix工作机制"></a>Hystrix工作机制</h2><p><img src="/images/pasted-10.png" alt="官方图"></p>
+<h3 id="创建命令对象"><a href="#创建命令对象" class="headerlink" title="创建命令对象"></a>创建命令对象</h3><h3 id="执行命令对象"><a href="#执行命令对象" class="headerlink" title="执行命令对象"></a>执行命令对象</h3><p>一共由四个执行接口：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">K             value   = command.execute(); //阻塞接口，返回请求结果  </span><br><span class="line">Future&lt;K&gt;     fValue  = command.queue(); //返回Future  </span><br><span class="line">Observable&lt;K&gt; ohValue = command.observe();   // 在调用的时候就开始执行对应的指令</span><br><span class="line">Observable&lt;K&gt; ocValue = command.toObservable();    // observe的lazy init版本</span><br></pre></td></tr></table></figure>
+<p>从底层实现来讲，HystrixCommand也是利用Observable实现的，尽管它只返回单个结果。HystrixCommand的queue方法实际上是调用了toObservable().toBlocking().toFuture()，而execute方法实际上是调用了queue().get()。</p>
+<h3 id="是否由cache结果"><a href="#是否由cache结果" class="headerlink" title="是否由cache结果"></a>是否由cache结果</h3><p>如果存在当前请求的结果cache则直接返回。</p>
 
       
     </div>
@@ -391,12 +416,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/test/" rel="tag"># test</a>
-          
-        </div>
-      
 
       
       
@@ -406,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/10/java-gc-一些想法/" rel="next" title="java 线上配置">
-                <i class="fa fa-chevron-left"></i> java 线上配置
+              <a href="/2018/03/07/实现分布式锁/" rel="next" title="实现分布式锁">
+                <i class="fa fa-chevron-left"></i> 实现分布式锁
               </a>
             
           </div>
@@ -415,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/25/分库分表Id设置/" rel="prev" title="分布式场景下的ID生成演进">
-                分布式场景下的ID生成演进 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#测试方法"><span class="nav-number">1.</span> <span class="nav-text">测试方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">1.1.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成测试"><span class="nav-number">1.2.</span> <span class="nav-text">集成测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手工测试"><span class="nav-number">1.3.</span> <span class="nav-text">手工测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jacoco"><span class="nav-number">1.3.1.</span> <span class="nav-text">jacoco</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线上回放"><span class="nav-number">1.4.</span> <span class="nav-text">线上回放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集成指标"><span class="nav-number">2.</span> <span class="nav-text">集成指标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码覆盖率"><span class="nav-number">2.1.</span> <span class="nav-text">代码覆盖率</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hystrix"><span class="nav-number">1.</span> <span class="nav-text">Hystrix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hystrix设计原则"><span class="nav-number">1.1.</span> <span class="nav-text">Hystrix设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hystrix设计目标"><span class="nav-number">1.2.</span> <span class="nav-text">Hystrix设计目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hystrix-如何实现设计目标？"><span class="nav-number">1.3.</span> <span class="nav-text">Hystrix 如何实现设计目标？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hystrix工作机制"><span class="nav-number">1.4.</span> <span class="nav-text">Hystrix工作机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建命令对象"><span class="nav-number">1.4.1.</span> <span class="nav-text">创建命令对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行命令对象"><span class="nav-number">1.4.2.</span> <span class="nav-text">执行命令对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否由cache结果"><span class="nav-number">1.4.3.</span> <span class="nav-text">是否由cache结果</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
